@@ -1,6 +1,7 @@
 Sol:
 
-class Solution {
+public class Solution {
+
     public int numSteps(String s) {
         int steps = 0;
         StringBuilder sb = new StringBuilder(s);
@@ -10,22 +11,22 @@ class Solution {
             // If even → divide by 2
             if (sb.charAt(sb.length() - 1) == '0') {
                 sb.deleteCharAt(sb.length() - 1);
-            }
+            } 
             // If odd → add 1
             else {
                 int i = sb.length() - 1;
 
-                // Turn all trailing 1s into 0
+                // Change all trailing 1s to 0
                 while (i >= 0 && sb.charAt(i) == '1') {
                     sb.setCharAt(i, '0');
                     i--;
                 }
 
-                // If we stopped at a 0, make it 1
+                // If we find a 0, change it to 1
                 if (i >= 0) {
                     sb.setCharAt(i, '1');
-                }
-                // If all were 1 (like 111), add 1 at front
+                } 
+                // If all were 1, add 1 at front
                 else {
                     sb.insert(0, '1');
                 }
@@ -36,8 +37,14 @@ class Solution {
 
         return steps;
     }
-}
 
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        String input = "1101";
+        int result = sol.numSteps(input);
+        System.out.println("Number of steps: " + result);
+    }
+}
 
 
 
